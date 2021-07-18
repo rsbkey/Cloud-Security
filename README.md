@@ -65,38 +65,51 @@ A summary of the access policies in place can be found in the table below.
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible?_
+- _What is the main advantage of automating configuration with Ansible?_
+  - To set up manage and deploy multiple servers at the same time. It also reduces the likelihood of human errors and saves us time.
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+- _: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
+-  Configure Elk VM with Docker
+-  Install docker.io
+-  Install Docker python module
+-  download and launch a docker elk container
+-  Enable service docker on boot
 
-The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
-
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- _TODO: List the IP addresses of the machines you are monitoring_
+- _ List the IP addresses of the machines you are monitoring_
+- 10.0.0.5
+- 10.0.0.6
+- 10.1.0.4
 
 We have installed the following Beats on these machines:
-- _TODO: Specify which Beats you successfully installed_
+- _Specify which Beats you successfully installed_
+- We installed Filebeat and Metricbeat
 
 These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+- _In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+- Filebeat: Monitors for SSH logins, Linux account logins, and sudo commands
+- Metricbeat: Monitors for CPU, RAM, and Network Usage
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
+- Copy the `yaml` file to `/etc/ansible.
+- Update the `host` file to include the IP addreses for the webservers you want to change
+- Run the playbook, and navigate to `targeted machines` to check that the installation worked as expected.
 
 _TODO: Answer the following questions to fill in the blanks:_
 - _Which file is the playbook? Where do you copy it?_
+  - The file that is the playbook is the `elk.yml`
 - _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
+  - You would update the playbook and the hosts file to run on a targeted machine.
 - _Which URL do you navigate to in order to check that the ELK server is running?
+Find the Elk Server Public IP
+
+https://IP:5601
+
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
